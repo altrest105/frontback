@@ -10,11 +10,23 @@
 <body>
     <header class="header">
         <nav class="header__nav header__nav--top">
-            <img class="header__icon" src="./assets/icons/Search.png" alt="Поиск" />
-            <img class="header__logo" src="./assets/logo.png" alt="Логотип Avion" />
+            <button class="header__icon-button" aria-label="Поиск">
+                <img class="header__icon" src="./assets/icons/Search.png" alt="Поиск" />
+            </button>
+            
+            <a href="#" class="header__logo-link">
+                <img class="header__logo" src="./assets/logo.png" alt="Логотип Avion" />
+            </a>
+            
             <div class="header__icons">
-                <img class="header__icon" src="./assets/icons/Shopping--cart.png" alt="Корзина" />
-                <img class="header__icon" src="./assets/icons/User--avatar.png" alt="Профиль пользователя" />
+                <button class="header__icon-button" aria-label="Корзина">
+                    <img class="header__icon" src="./assets/icons/Shopping--cart.png" alt="Корзина" />
+                    <span class="header__cart-badge">2</span>
+                </button>
+                
+                <button class="header__icon-button" aria-label="Профиль пользователя">
+                    <img class="header__icon" src="./assets/icons/User--avatar.png" alt="Профиль пользователя" />
+                </button>
             </div>
         </nav>
         <nav class="header__nav header__nav--main">

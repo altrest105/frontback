@@ -35,13 +35,86 @@ body {
     margin-bottom: 1rem;
 }
 
+.header__icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header__icon-button:hover {
+    background-color: rgba(44, 85, 48, 0.1);
+    transform: translateY(-2px);
+}
+
+.header__icon-button:active {
+    transform: translateY(0);
+    background-color: rgba(44, 85, 48, 0.2);
+}
+
+.header__icon-button:focus {
+    outline: 2px solid #2c5530;
+    outline-offset: 2px;
+}
+
+.header__icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.header__icon-button:hover .header__icon {
+    transform: scale(1.1);
+}
+
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.header__logo-link:hover {
+    transform: scale(1.05);
+}
+
 .header__logo {
     width: 120px;
+    transition: opacity 0.3s ease;
+}
+
+.header__logo-link:hover .header__logo {
+    opacity: 0.9;
+}
+
+.header__cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(30%, -30%);
+    border: 2px solid white;
 }
 
 .header__icons {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .header__nav--main {
@@ -433,7 +506,7 @@ body {
     border-top: 1px solid #2c5530;
 }
 
-/* Медиа-запросы для адаптивности */
+/* Медиа */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -469,5 +542,20 @@ body {
     .features__grid {
         grid-template-columns: 1fr;
         justify-items: center;
+    }
+    
+    .header__icon-button {
+        padding: 0.4rem;
+    }
+    
+    .header__icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .header__cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
     }
 }
