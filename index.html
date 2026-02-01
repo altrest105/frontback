@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avion</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
 </head>
 <body>
     <header class="header">
         <nav class="header__nav header__nav--top">
-            <button class="header__icon-button" aria-label="Поиск">
-                <img class="header__icon" src="./assets/icons/Search.png" alt="Поиск" />
+            <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
             </button>
             
             <a href="#" class="header__logo-link">
@@ -19,8 +23,13 @@
             </a>
             
             <div class="header__icons">
+                <button class="header__icon-button" aria-label="Поиск">
+                    <img class="header__icon" src="./assets/icons/Search.png" alt="Поиск" />
+                </button>
+                
                 <button class="header__icon-button" aria-label="Корзина">
                     <img class="header__icon" src="./assets/icons/Shopping--cart.png" alt="Корзина" />
+                    <span class="header__cart-badge">2</span>
                 </button>
                 
                 <button class="header__icon-button" aria-label="Профиль пользователя">
@@ -28,14 +37,31 @@
                 </button>
             </div>
         </nav>
-        <nav class="header__nav header__nav--main">
-            <a class="header__link" href="#plant-pots">Горшки для растений</a>
-            <a class="header__link" href="#ceramics">Керамика</a>
-            <a class="header__link" href="#tables">Столы</a>
-            <a class="header__link" href="#chairs">Стулья</a>
-            <a class="header__link" href="#crockery">Посуда</a>
-            <a class="header__link" href="#tableware">Столовая утварь</a>
-            <a class="header__link" href="#cutlery">Столовые приборы</a>
+        
+        <nav class="nav" id="mainNav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="#plant-pots">Горшки для растений</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#ceramics">Керамика</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#tables">Столы</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#chairs">Стулья</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#crockery">Посуда</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#tableware">Столовая утварь</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#cutlery">Столовые приборы</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -195,5 +221,11 @@
         </nav>
         <h3 class="footer__copyright">© Avion LTD, 2022</h3>
     </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
+        ↑
+    </button>
+
+    <script src="scripts/menu.js"></script>
 </body>
 </html>
