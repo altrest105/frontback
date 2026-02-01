@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avion</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <!-- Подключение шрифтов -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Основные стили -->
     <link rel="stylesheet" href="styles/style.css" />
+    <!-- Мобильные стили -->
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
 </head>
 <body>
     <header class="header">
-        <nav class="header__nav header__nav--top">
+        <div class="header__container">
+            <!-- Гамбургер-кнопка -->
             <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
                 <span class="menu-toggle__line"></span>
                 <span class="menu-toggle__line"></span>
@@ -29,15 +33,15 @@
                 
                 <button class="header__icon-button" aria-label="Корзина">
                     <img class="header__icon" src="./assets/icons/Shopping--cart.png" alt="Корзина" />
-                    <span class="header__cart-badge">2</span>
                 </button>
                 
                 <button class="header__icon-button" aria-label="Профиль пользователя">
                     <img class="header__icon" src="./assets/icons/User--avatar.png" alt="Профиль пользователя" />
                 </button>
             </div>
-        </nav>
+        </div>
         
+        <!-- Основная навигация -->
         <nav class="nav" id="mainNav">
             <ul class="nav__list">
                 <li class="nav__item">
@@ -63,8 +67,20 @@
                 </li>
             </ul>
         </nav>
+        
+        <!-- Десктопная навигация (вторая строка) -->
+        <nav class="header__nav header__nav--main">
+            <a class="header__link" href="#plant-pots">Горшки для растений</a>
+            <a class="header__link" href="#ceramics">Керамика</a>
+            <a class="header__link" href="#tables">Столы</a>
+            <a class="header__link" href="#chairs">Стулья</a>
+            <a class="header__link" href="#crockery">Посуда</a>
+            <a class="header__link" href="#tableware">Столовая утварь</a>
+            <a class="header__link" href="#cutlery">Столовые приборы</a>
+        </nav>
     </header>
 
+    <!-- Остальной контент без изменений -->
     <main class="main">
         <article class="article hero">
             <aside class="hero__content">
@@ -222,10 +238,12 @@
         <h3 class="footer__copyright">© Avion LTD, 2022</h3>
     </footer>
 
+    <!-- Кнопка "Наверх" -->
     <button class="scroll-top" id="scrollTop" aria-label="Наверх">
         ↑
     </button>
 
+    <!-- Подключение JavaScript -->
     <script src="scripts/menu.js"></script>
 </body>
 </html>

@@ -22,69 +22,21 @@ body {
 
 /* HEADER */
 .header {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
     background-color: #fff;
     border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Flexbox навигация */
-.header__nav--top {
+.header__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
-.header__nav--main {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.header__icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 8px;
-    min-width: 44px;
-    min-height: 44px;
-}
-
-.header__icon {
-    width: 24px;
-    height: 24px;
-}
-
-.header__logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.header__logo {
-    width: 120px;
-}
-
-.header__icons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.header__link {
-    text-decoration: none;
-    color: #2c5530;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 17px;
-}
-
-/* Гамбургер-кнопка */
+/* Гамбургер-кнопка (скрыта на десктопе) */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -93,7 +45,7 @@ body {
     height: 44px;
     background: transparent;
     border: none;
-    padding: 12px 10px;
+    padding: 12px 8px;
     cursor: pointer;
     z-index: 1001;
     min-width: 44px;
@@ -121,37 +73,113 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Новая навигация */
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header__logo {
+    width: 120px;
+}
+
+.header__icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header__icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.header__icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Десктопная навигация (вторая строка) */
+.header__nav--main {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.header__link {
+    text-decoration: none;
+    color: #2c5530;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 17px;
+    transition: background-color 0.3s ease;
+}
+
+.header__link:hover {
+    background-color: rgba(44, 85, 48, 0.1);
+}
+
+/* Мобильная навигация (скрыта по умолчанию) */
 .nav {
-    display: block;
+    display: none;
 }
 
 .nav__list {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     list-style: none;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
-    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
 }
 
 .nav__item {
     list-style: none;
+    width: 100%;
 }
 
 .nav__link {
     text-decoration: none;
     color: #2c5530;
     font-weight: 500;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    font-size: 17px;
+    padding: 15px 20px;
+    font-size: 18px;
     display: block;
-    transition: all 0.3s ease;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    transition: background-color 0.3s ease;
 }
 
 .nav__link:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(44, 85, 48, 0.1);
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+
+.nav-overlay.active {
+    display: block;
 }
 
 /* MAIN */
@@ -499,7 +527,7 @@ body {
     visibility: visible;
 }
 
-
+/* Ноутбуки */
 @media (max-width: 1199px) {
     .hero__title {
         font-size: 2.2rem;
