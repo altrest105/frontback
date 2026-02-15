@@ -1,249 +1,468 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avion</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-    <!-- Подключение шрифтов -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestMind — умный учёт инвестиций</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Основные стили -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- Мобильные стили -->
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #a78bfa;
+            --text-color: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-light: #334155;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-dark);
+        }
+        
+        .card {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        .card p {
+            color: var(--text-secondary);
+        }
+        .card .title {
+            color: var(--text-color);
+        }
+        .section {
+            padding: 4rem 1.5rem;
+        }
+        .section p {
+            color: var(--text-secondary);
+        }
+        .section-alt {
+            background-color: var(--bg-card);
+        }
+        .hero.is-primary {
+            background: linear-gradient(135deg, #1e293b 0%, var(--primary-color) 50%, var(--secondary-color) 100%);
+        }
+        .footer {
+            padding: 3rem 1.5rem 2rem;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer a {
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        .footer ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer p,
+        .footer .title {
+            color: var(--text-color);
+        }
+        .footer hr {
+            background-color: var(--border-color);
+        }
+        .footer .icon i {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .icon i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        .card:hover .icon i {
+            color: var(--secondary-color);
+        }
+        .pricing-card {
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+        }
+        .pricing-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+        .pricing-card .title {
+            color: var(--text-color);
+        }
+        .pricing-card .subtitle {
+            color: var(--text-secondary);
+        }
+        /* Навигация */
+        .navbar {
+            background: rgba(30, 41, 59, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar.has-shadow {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-item {
+            color: var(--text-color);
+        }
+        .navbar-item strong {
+            color: var(--text-color);
+        }
+        .navbar-menu {
+            display: flex !important;
+        }
+        .navbar-burger {
+            display: none;
+        }
+        .button.is-primary {
+            background: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        .button.is-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .button.is-light {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        .button.is-light:hover {
+            background-color: var(--border-color);
+            color: var(--text-color);
+        }
+        .button.is-outlined.is-light {
+            color: white;
+            border-color: white;
+        }
+        .button.is-outlined.is-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .hero .button.is-light:not(.is-outlined) {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        .hero .button.is-light:not(.is-outlined):hover {
+            background-color: #f8fafc;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .has-text-primary {
+            color: var(--primary-color) !important;
+        }
+        .navbar-item:hover {
+            color: var(--primary-color) !important;
+        }
+        .feature-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        .pricing-list li {
+            padding: 0.5rem 0;
+            color: var(--text-color);
+        }
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 0 0 0 8px;
+        }
+        .pricing-featured {
+            border: 2px solid var(--primary-color) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .dashboard-image {
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+        .title {
+            color: var(--text-color);
+        }
+        .subtitle {
+            color: var(--text-secondary);
+        }
+        .hero .title,
+        .hero .subtitle {
+            color: white;
+        }
+        @media screen and (max-width: 1023px) {
+            .navbar-menu {
+                display: block !important;
+                background-color: var(--bg-card);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+                padding: 0.5rem 0;
+            }
+            .navbar-start, .navbar-end {
+                display: block;
+            }
+            .navbar-item {
+                display: block;
+                padding: 0.75rem 1rem;
+            }
+            .navbar-burger {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header__container">
-            <!-- Гамбургер-кнопка -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
-                <span class="menu-toggle__line"></span>
-                <span class="menu-toggle__line"></span>
-                <span class="menu-toggle__line"></span>
-            </button>
-            
-            <a href="#" class="header__logo-link">
-                <img class="header__logo" src="./assets/logo.png" alt="Логотип Avion" />
+
+<!-- Фиксированный хедер с логотипом и навигацией -->
+<!-- Бургер скрыт, меню всегда видимо -->
+<nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <strong>📈 InvestMind</strong>
             </a>
-            
-            <div class="header__icons">
-                <button class="header__icon-button" aria-label="Поиск">
-                    <img class="header__icon" src="./assets/icons/Search.png" alt="Поиск" />
-                </button>
-                
-                <button class="header__icon-button" aria-label="Корзина">
-                    <img class="header__icon" src="./assets/icons/Shopping--cart.png" alt="Корзина" />
-                </button>
-                
-                <button class="header__icon-button" aria-label="Профиль пользователя">
-                    <img class="header__icon" src="./assets/icons/User--avatar.png" alt="Профиль пользователя" />
-                </button>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a href="#features" class="navbar-item">Возможности</a>
+                <a href="#how-it-works" class="navbar-item">Как это работает</a>
+                <a href="#pricing" class="navbar-item">Тарифы</a>
+                <a href="#faq" class="navbar-item">FAQ</a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light">Войти</a>
+                        <a class="button is-primary">Регистрация</a>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- Основная навигация -->
-        <nav class="nav" id="mainNav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link" href="#plant-pots">Горшки для растений</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#ceramics">Керамика</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#tables">Столы</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#chairs">Стулья</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#crockery">Посуда</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#tableware">Столовая утварь</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#cutlery">Столовые приборы</a>
-                </li>
-            </ul>
-        </nav>
-        
-        <!-- Десктопная навигация (вторая строка) -->
-        <nav class="header__nav header__nav--main">
-            <a class="header__link" href="#plant-pots">Горшки для растений</a>
-            <a class="header__link" href="#ceramics">Керамика</a>
-            <a class="header__link" href="#tables">Столы</a>
-            <a class="header__link" href="#chairs">Стулья</a>
-            <a class="header__link" href="#crockery">Посуда</a>
-            <a class="header__link" href="#tableware">Столовая утварь</a>
-            <a class="header__link" href="#cutlery">Столовые приборы</a>
-        </nav>
-    </header>
+    </div>
+</nav>
 
-    <!-- Остальной контент без изменений -->
-    <main class="main">
-        <article class="article hero">
-            <aside class="hero__content">
-                <h1 class="hero__title">Бренд мебели будущего с&nbsp;неподвластным времени дизайном</h1>
-                <button class="hero__button">Посмотреть коллекцию</button>
-                <p class="hero__text">
-                    Новая эра экологичной мебели с&nbsp;Avion&nbsp;&mdash; брендом,
-                    сочетающим современные веб-технологии, изящные шрифты и&nbsp;внимание
-                    к&nbsp;деталям.
-                </p>
-            </aside>
-            <div class="hero__image">
-                <img src="./assets/img/right_image.png" alt="Чёрный дизайнерский стул" />
+<!-- Герой-секция с заголовком, подзаголовком и CTA кнопкой -->
+<section class="hero is-primary is-halfheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title is-1">
+            Следите за доходностью инвестиций без усилий
+            </h1>
+            <h2 class="subtitle is-4">
+            InvestMind объединяет все ваши счета: брокерские, ИИС, криптовалюту. Реальная доходность, дивиденды — в одном окне.
+            </h2>
+            <div class="buttons is-centered">
+            <a href="#pricing" class="button is-large is-light">
+                <span>Начать бесплатно</span>
+                <span class="icon">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </a>
+            <a href="#how-it-works" class="button is-large is-outlined is-light">
+                <span class="icon">
+                    <i class="fas fa-play"></i>
+                </span>
+                <span>Как это работает</span>
+            </a>
             </div>
-        </article>
+        </div>
+    </div>
+</section>
 
-        <article class="article features">
-            <h2 class="features__title">Что делает наш бренд особенным</h2>
-            <div class="features__grid">
-                <section class="feature">
-                    <img class="feature__icon" src="./assets/icons/Delivery.png" alt="Иконка доставки" />
-                    <h3 class="feature__title">Доставка на&nbsp;следующий день</h3>
-                    <p class="feature__text">
-                        Сделайте заказ до&nbsp;15:00 и&nbsp;получите его уже на&nbsp;следующий день.
-                    </p>
-                </section>
-                <section class="feature">
-                    <img class="feature__icon" src="./assets/icons/Checkmark--outline.png" alt="Иконка качества" />
-                    <h3 class="feature__title">Создано мастерами</h3>
-                    <p class="feature__text">
-                        Ручная работа, выполненная с&nbsp;настоящей страстью и&nbsp;опытом.
-                    </p>
-                </section>
-                <section class="feature">
-                    <img class="feature__icon" src="./assets/icons/Purchase.png" alt="Иконка цены" />
-                    <h3 class="feature__title">Честные цены</h3>
-                    <p class="feature__text">
-                        Лучшее соотношение цены и&nbsp;качества без переплат.
-                    </p>
-                </section>
-                <section class="feature">
-                    <img class="feature__icon" src="./assets/icons/Sprout.png" alt="Иконка экологии" />
-                    <h3 class="feature__title">Экологичная упаковка</h3>
-                    <p class="feature__text">
-                        Мы&nbsp;используем 100% переработанную упаковку.
-                    </p>
-                </section>
+<!-- Секция "О проекте" с текстом и изображением (Возможности) -->
+<section class="section" id="features">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    <h2 class="title is-2">Вся аналитика на одном экране</h2>
+                    <p class="subtitle is-5">Забудьте о сложных Excel-таблицах. Мы показываем самую важную статистику: относительную и абсолютную доходность, сравнение с индексами, дивидендный календарь.</p>
+                    <ul class="feature-list">
+                        <li><span class="icon has-text-primary"><i class="fas fa-check-circle"></i></span>  Автосбор сделок с 10+ брокеров</li>
+                        <li><span class="icon has-text-primary"><i class="fas fa-check-circle"></i></span>  Налоговая оптимизация и отчёты</li>
+                    </ul>
             </div>
-        </article>
+        </div>
+    </div>
+</section>
 
-        <article class="article products">
-            <h2 class="products__title">Новая керамика</h2>
-            <div class="products__grid">
-                <section class="product">
-                    <img class="product__image" src="./assets/img/dandy_chair.png" alt="Стул Дэнди" />
-                    <h3 class="product__title">Стул «Дэнди»</h3>
-                    <p class="product__price">£250</p>
-                </section>
-                <section class="product">
-                    <img class="product__image" src="./assets/img/rustic_vase.png" alt="Деревенские вазы" />
-                    <h3 class="product__title">Набор «Деревенские вазы»</h3>
-                    <p class="product__price">£155</p>
-                </section>
-                <section class="product">
-                    <img class="product__image" src="./assets/img/silk_vase.png" alt="Ваза Шёлковая" />
-                    <h3 class="product__title">Ваза «Шёлковая»</h3>
-                    <p class="product__price">£125</p>
-                </section>
-                <section class="product">
-                    <img class="product__image" src="./assets/img/lucy_lamp.png" alt="Лампа Люси" />
-                    <h3 class="product__title">Лампа «Люси»</h3>
-                    <p class="product__price">£399</p>
-                </section>
+<!-- Сетка карточек -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered">Почему выбирают InvestMind</h2>
+        <div class="columns is-multiline is-centered">
+            <!-- Карточка 1 -->
+            <div class="column is-4">
+                <div class="card has-text-centered p-5">
+                    <div class="card-content">
+                        <span class="icon is-large">
+                            <i class="fas fa-shield-alt fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4">Безопасность</h3>
+                        <p>Шифрование данных и доступ по 2FA. Мы не храним пароли от брокеров.</p>
+                    </div>
+                </div>
             </div>
-            <button class="products__button">Посмотреть коллекцию</button>
-        </article>
-
-        <article class="article products">
-            <h2 class="products__title">Наши популярные товары</h2>
-            <div class="products__grid">
-                <section class="product">
-                    <img class="product__image" src="./assets/img/popolar_sofa.png" alt="Диван Пополар" />
-                    <h3 class="product__title">Диван «Пополар»</h3>
-                    <p class="product__price">£980</p>
-                </section>
-                <section class="product">
-                    <img class="product__image" src="./assets/img/dandy_chair.png" alt="Стул Дэнди" />
-                    <h3 class="product__title">Стул «Дэнди»</h3>
-                    <p class="product__price">£250</p>
-                </section>
-                <section class="product">
-                    <img class="product__image" src="./assets/img/dandy2_chair.png" alt="Стул Дэнди модель 2" />
-                    <h3 class="product__title">Стул «Дэнди»</h3>
-                    <p class="product__price">£250</p>
-                </section>
+            <!-- Карточка 2 -->
+            <div class="column is-4">
+                <div class="card has-text-centered p-5">
+                    <div class="card-content">
+                        <span class="icon is-large">
+                            <i class="fas fa-chart-line fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4">Точная доходность</h3>
+                        <p>Учитываем пополнения и выводы. Честный расчёт доходности, как у профессионалов.</p>
+                    </div>
+                </div>
             </div>
-            <button class="products__button">Посмотреть коллекцию</button>
-        </article>
-
-        <article class="article newsletter">
-            <h2 class="newsletter__title">Присоединяйтесь к&nbsp;клубу</h2>
-            <p class="newsletter__text">
-                Подпишитесь на&nbsp;рассылку и&nbsp;получайте эксклюзивные предложения
-                и&nbsp;новости.
-            </p>
-            <form class="newsletter__form">
-                <input class="newsletter__input" type="email" placeholder="your@email.com" required />
-                <button class="newsletter__button" type="submit">Подписаться</button>
-            </form>
-        </article>
-
-        <article class="article about">
-            <aside class="about__content">
-                <h2 class="about__title">От&nbsp;студии в&nbsp;Лондоне до&nbsp;мирового бренда</h2>
-                <p class="about__text">
-                    Мы&nbsp;создаём доступную и&nbsp;качественную мебель для современного
-                    дома.
-                </p>
-                <h3 class="about__contact">Связаться с&nbsp;нами</h3>
-            </aside>
-            <div class="about__image">
-                <img src="./assets/img/interior.png" alt="Интерьер магазина Avion" />
+            <!-- Карточка 3 -->
+            <div class="column is-4">
+                <div class="card has-text-centered p-5">
+                    <div class="card-content">
+                        <span class="icon is-large">
+                            <i class="fas fa-mobile-alt fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4">Всегда под рукой</h3>
+                        <p>Мобильная версия и Telegram-бот. Уведомления о дивидендах и событиях.</p>
+                    </div>
+                </div>
             </div>
-        </article>
-    </main>
+        </div>
+    </div>
+</section>
 
-    <footer class="footer">
-        <nav class="footer__nav">
-            <section class="footer__section">
-                <h2 class="footer__title">Меню</h2>
-                <a class="footer__link" href="#new">Новинки</a>
-                <a class="footer__link" href="#bestsellers">Хиты продаж</a>
-                <a class="footer__link" href="#recent">Недавно просмотренные</a>
-                <a class="footer__link" href="#popular">Популярные на этой неделе</a>
-                <a class="footer__link" href="#all">Все товары</a>
-            </section>
-            <section class="footer__section">
-                <h2 class="footer__title">Категории</h2>
-                <a class="footer__link" href="#crockery">Посуда</a>
-                <a class="footer__link" href="#furniture">Мебель</a>
-                <a class="footer__link" href="#homeware">Товары для дома</a>
-                <a class="footer__link" href="#plant-pots">Горшки для растений</a>
-                <a class="footer__link" href="#chairs">Стулья</a>
-                <a class="footer__link" href="#tableware">Посуда</a>
-            </section>
-            <section class="footer__section">
-                <h2 class="footer__title">О&nbsp;компании</h2>
-                <a class="footer__link" href="#about">О&nbsp;нас</a>
-                <a class="footer__link" href="#careers">Вакансии</a>
-                <a class="footer__link" href="#contact">Контакты</a>
-                <a class="footer__link" href="#privacy">Политика конфиденциальности</a>
-                <a class="footer__link" href="#returns">Политика возврата</a>
-            </section>
-        </nav>
-        <h3 class="footer__copyright">© Avion LTD, 2022</h3>
-    </footer>
+<!-- Секция "Как это работает" -->
+<section class="section" id="how-it-works">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered">Как начать за 3 шага</h2>
+        <div class="columns is-centered">
+            <div class="column is-3 has-text-centered">
+                <span class="icon is-large"><i class="fas fa-user-plus fa-3x"></i></span>
+                <h3 class="title is-5">1. Регистрация</h3>
+                <p>Создайте аккаунт за пару минут, используя email или соцсети.</p>
+            </div>
+            <div class="column is-3 has-text-centered">
+                <span class="icon is-large"><i class="fas fa-link fa-3x"></i></span>
+                <h3 class="title is-5">2. Подключение</h3>
+                <p>Добавьте брокерские счета или загрузите выписки вручную.</p>
+            </div>
+            <div class="column is-3 has-text-centered">
+                <span class="icon is-large"><i class="fas fa-chart-pie fa-3x"></i></span>
+                <h3 class="title is-5">3. Анализ</h3>
+                <p>Получайте детальную статистику и следите за прогрессом.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Кнопка "Наверх" -->
-    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
-        ↑
-    </button>
+<!-- Секция Тарифов -->
+<section class="section section-alt" id="pricing">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered">Тарифы для любого уровня</h2>
+        <div class="columns is-centered">
+            <div class="column is-4">
+                <div class="card pricing-card has-text-centered p-5">
+                    <h3 class="title is-4">Базовый</h3>
+                    <p class="title is-2">0 ₽</p>
+                    <p class="subtitle is-6">навсегда</p>
+                    <ul class="pricing-list">
+                        <li><span class="icon has-text-primary"><i class="fas fa-check"></i></span> До 10 сделок</li>
+                        <li><span class="icon has-text-primary"><i class="fas fa-check"></i></span> Общая доходность</li>
+                        <li><span class="icon has-text-primary"><i class="fas fa-check"></i></span> Просмотр портфеля</li>
+                    </ul>
+                    <a href="#" class="button is-primary is-fullwidth mt-4">Попробовать</a>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card pricing-card pricing-featured has-text-centered p-5">
+                    <div class="popular-badge">Популярный</div>
+                    <h3 class="title is-4">Профи</h3>
+                    <p class="title is-2">499 ₽</p>
+                    <p class="subtitle is-6">в месяц</p>
+                    <ul class="pricing-list">
+                        <li><span class="icon has-text-primary"><i class="fas fa-check"></i></span> Безлимит сделок</li>
+                        <li><span class="icon has-text-primary"><i class="fas fa-check"></i></span> Экспорт отчётов</li>
+                    </ul>
+                    <a href="#" class="button is-primary is-fullwidth mt-4">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Подключение JavaScript -->
-    <script src="scripts/menu.js"></script>
+<!-- Футер с контактами и ссылками на соцсети -->
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <h4 class="title is-6">InvestMind</h4>
+                <p>Сервис для учёта инвестиций и расчёта доходности. Просто, прозрачно, безопасно.</p>
+            </div>
+            <div class="column is-2">
+                <h4 class="title is-6">Документы</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Пользовательское соглашение</a></li>
+                    <li><a href="#">Договор оферты</a></li>
+                </ul>
+            </div>
+            <div class="column is-2">
+                <h4 class="title is-6">Соцсети</h4>
+                <ul>
+                    <li><a href="#"><span class="icon"><i class="fab fa-telegram"></i></span> Telegram</a></li>
+                    <li><a href="#"><span class="icon"><i class="fab fa-vk"></i></span> VK</a></li>
+                    <li><a href="#"><span class="icon"><i class="fab fa-youtube"></i></span> YouTube</a></li>
+                </ul>
+            </div>
+            <div class="column is-4">
+                <h4 class="title is-6">Контакты</h4>
+                <p>support@investmind.ru</p>
+                <p>8 800 555-35-35</p>
+            </div>
+        </div>
+        <hr>
+        <p class="has-text-centered">© 2026 InvestMind. Все права защищены.</p>
+    </div>
+</footer>
 </body>
 </html>
