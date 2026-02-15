@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | InvestMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --text-color: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-light: #334155;
+            --border-color: #334155;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-dark);
+        }
+        
+        .section {
+            padding: 4rem 1.5rem;
+        }
+        
+        .navbar {
+            background: rgba(30, 41, 59, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .navbar-item {
+            color: var(--text-color);
+        }
+        
+        .navbar-item:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar-item.is-active {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+        
+        .navbar-menu {
+            display: flex !important;
+        }
+        
+        .navbar-burger {
+            display: none;
+        }
+        
+        .button.is-primary {
+            background: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .footer {
+            padding: 3rem 1.5rem 2rem;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer a {
+            color: var(--text-secondary);
+        }
+        
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* CSS-аккордеон (без JS) */
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--bg-card);
+        }
+        
+        .accordion-header {
+            margin: 0;
+        }
+        
+        .accordion-toggle {
+            display: none;
+        }
+        
+        .accordion-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--bg-card);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-button:hover {
+            background-color: var(--bg-light);
+        }
+        
+        .accordion-button i {
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--bg-dark);
+        }
+        
+        /* Когда чекбокс отмечен - показываем контент */
+        .accordion-toggle:checked ~ .accordion-content {
+            max-height: 300px;
+        }
+        
+        .accordion-toggle:checked ~ .accordion-button i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-toggle:checked ~ .accordion-button {
+            background-color: var(--bg-light);
+        }
+        
+        .accordion-body {
+            padding: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-tag {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        @media screen and (max-width: 1023px) {
+            .navbar-menu {
+                display: block !important;
+                background-color: var(--bg-card);
+                padding: 0.5rem 0;
+            }
+            .navbar-item {
+                display: block;
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Хедер -->
+<nav class="navbar is-fixed-top has-shadow">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <strong>📈 InvestMind</strong>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a href="index.html" class="navbar-item">Главная</a>
+                <a href="faq.html" class="navbar-item is-active">FAQ</a>
+                <a href="contacts.html" class="navbar-item">Контакты</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light">Войти</a>
+                        <a class="button is-primary">Регистрация</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- FAQ страница -->
+<section class="section">
+    <div class="container">
+        <h1 class="title is-2 has-text-centered">Часто задаваемые вопросы</h1>
+        <p class="subtitle is-5 has-text-centered mb-6">Ответы на популярные вопросы</p>
+        
+        <!-- Категории (только для красоты, без фильтрации) -->
+        <div class="faq-categories">
+            <span class="category-tag">Все</span>
+            <span class="category-tag">Начало работы</span>
+            <span class="category-tag">Тарифы</span>
+            <span class="category-tag">Безопасность</span>
+        </div>
+        
+        <!-- Аккордеон на чистом CSS -->
+        <div class="accordion">
+            
+            <!-- Вопрос 1 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq1" class="accordion-toggle" checked>
+                <label for="faq1" class="accordion-button">
+                    Как начать пользоваться сервисом?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Зарегистрируйтесь на сайте, подтвердите email и начните пользоваться бесплатным тарифом. Все функции доступны сразу после регистрации.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вопрос 2 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq2" class="accordion-toggle">
+                <label for="faq2" class="accordion-button">
+                    Есть ли мобильное приложение?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Да, наше приложение доступно в App Store и Google Play. Все функции синхронизируются между веб-версией и приложением.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вопрос 3 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq3" class="accordion-toggle">
+                <label for="faq3" class="accordion-button">
+                    Какие тарифы доступны?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        У нас два тарифа: Базовый (бесплатный) с ограничением до 10 сделок и Профи (499 ₽/мес) с безлимитными сделками и расширенной аналитикой.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вопрос 4 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq4" class="accordion-toggle">
+                <label for="faq4" class="accordion-button">
+                    Как удалить аккаунт?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Для удаления аккаунта напишите в поддержку с вашей зарегистрированной почты. Мы удалим все данные в течение 24 часов.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вопрос 5 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq5" class="accordion-toggle">
+                <label for="faq5" class="accordion-button">
+                    Насколько безопасны мои данные?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Мы используем 256-битное шифрование и двухфакторную аутентификацию. Сертификаты SSL гарантируют защиту вашей информации.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вопрос 6 -->
+            <div class="accordion-item">
+                <input type="checkbox" id="faq6" class="accordion-toggle">
+                <label for="faq6" class="accordion-button">
+                    Какие брокеры поддерживаются?
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Поддерживаются Тинькофф, СберИнвестор, ВТБ, БКС, Финам и другие. Также возможен импорт выписок вручную.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ссылка на поддержку -->
+        <div class="has-text-centered mt-6">
+            <p class="subtitle is-5">Не нашли ответ?</p>
+            <a href="contacts.html" class="button is-primary is-large mt-3">
+                <span>Связаться с поддержкой</span>
+                <span class="icon">
+                    <i class="fas fa-headset"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Футер (такой же как на главной) -->
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <h4 class="title is-6">InvestMind</h4>
+                <p>Сервис для учёта инвестиций и расчёта доходности.</p>
+            </div>
+            <div class="column is-2">
+                <h4 class="title is-6">Документы</h4>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Пользовательское соглашение</a></li>
+                </ul>
+            </div>
+            <div class="column is-2">
+                <h4 class="title is-6">Соцсети</h4>
+                <ul>
+                    <li><a href="#"><span class="icon"><i class="fab fa-telegram"></i></span> Telegram</a></li>
+                    <li><a href="#"><span class="icon"><i class="fab fa-vk"></i></span> VK</a></li>
+                </ul>
+            </div>
+            <div class="column is-4">
+                <h4 class="title is-6">Контакты</h4>
+                <p>support@investmind.ru</p>
+                <p>8 800 555-35-35</p>
+            </div>
+        </div>
+        <hr>
+        <p class="has-text-centered">© 2026 InvestMind</p>
+    </div>
+</footer>
+</body>
+</html>
