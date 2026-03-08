@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты | InvestMind</title>
-    <!-- Те же подключения, что и в index.html -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* Копируем все стили из index.html */
         :root {
             --primary-color: #6366f1;
             --primary-dark: #4f46e5;
@@ -180,7 +178,6 @@
 </head>
 <body>
 
-<!-- Тот же хедер, что на главной -->
 <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
@@ -208,7 +205,6 @@
     </div>
 </nav>
 
-<!-- Страница контактов -->
 <section class="section">
     <div class="container">
         <h1 class="title is-2 has-text-centered">Свяжитесь с нами</h1>
@@ -240,7 +236,6 @@
                     </div>
                 </div>
                 
-                <!-- Карта через iframe -->
                 <div class="map-container mt-5">
                     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa09f886ab3a2a54da07206009e9994a648cf0d924b6a074c0ab6b23ac7f9260&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
                 </div>
@@ -252,39 +247,39 @@
                     
                     <form id="feedbackForm">
                         <div class="field">
-                            <label class="label">Имя</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Ваше имя" required>
+                            <label class="label">ФИО</label>
+                            <div class="control has-icons-left">
+                                <input id="fullname" class="input" type="text" placeholder="Иван Иванов">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Телефон</label>
+                            <div class="control has-icons-left">
+                                <input id="phone" class="input" type="tel" placeholder="+7 (999) 000-00-00">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-phone"></i>
+                                </span>
                             </div>
                         </div>
                         
                         <div class="field">
                             <label class="label">Email</label>
-                            <div class="control">
-                                <input class="input" type="email" placeholder="example@email.com" required>
-                            </div>
-                        </div>
-                        
-                        <div class="field">
-                            <label class="label">Тема</label>
-                            <div class="control">
-                                <div class="select is-fullwidth">
-                                    <select required>
-                                        <option value="" disabled selected>Выберите тему</option>
-                                        <option>Вопрос о сервисе</option>
-                                        <option>Сотрудничество</option>
-                                        <option>Техническая поддержка</option>
-                                        <option>Предложение</option>
-                                        <option>Благодарность</option>
-                                    </select>
-                                </div>
+                            <div class="control has-icons-left">
+                                <input id="email" class="input" type="email" placeholder="example@email.com">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
                             </div>
                         </div>
                         
                         <div class="field">
                             <label class="label">Сообщение</label>
                             <div class="control">
-                                <textarea class="textarea" placeholder="Ваше сообщение..." rows="5" required></textarea>
+                                <textarea id="message" class="textarea" placeholder="Ваше сообщение..." rows="5"></textarea>
                             </div>
                         </div>
                         
@@ -309,7 +304,6 @@
     </div>
 </section>
 
-<!-- Тот же футер, что на главной -->
 <footer class="footer">
     <div class="container">
         <div class="columns">
@@ -343,5 +337,7 @@
         <p class="has-text-centered">© 2026 InvestMind. Все права защищены.</p>
     </div>
 </footer>
+    <script src="scripts/validation.js"></script>
+    <script src="scripts/consoleLogger.js"></script>
 </body>
 </html>
